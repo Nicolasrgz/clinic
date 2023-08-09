@@ -17,8 +17,8 @@ public class Medic {
     private String lastName;
     private Integer age;
     private String registrationNumber;
-    @ManyToMany(mappedBy = "medic", fetch = FetchType.EAGER)
-    private Set<MedicalSpecialties>medicalSpecialties = new HashSet<>();
+//    @ManyToMany(mappedBy = "medic", fetch = FetchType.EAGER)
+//    private Set<MedicalSpecialties>medicalSpecialties = new HashSet<>();
 
     public Medic() {
     }
@@ -66,11 +66,11 @@ public class Medic {
         this.registrationNumber = registrationNumber;
     }
 
-    public Set<MedicalSpecialties> getMedicalSpecialties() {
-        return medicalSpecialties;
-    }
-
-    public void setMedicalSpecialties(Set<MedicalSpecialties> medicalSpecialties) {
-        this.medicalSpecialties = medicalSpecialties;
-    }
+//    public Set<MedicalSpecialties> getMedicalSpecialties() {
+//        return medicalSpecialties;
+//    }
+//
+//    public void setMedicalSpecialties(Set<MedicalSpecialties> medicalSpecialties) {
+//        this.medicalSpecialties = medicalSpecialties;
+//    }
 }

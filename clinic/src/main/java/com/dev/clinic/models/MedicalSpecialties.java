@@ -15,8 +15,8 @@ public class MedicalSpecialties {
     private String name;
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Medic> medics;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    private Set<Medic> medics;
 
     public MedicalSpecialties() {
     }
@@ -46,11 +46,11 @@ public class MedicalSpecialties {
         this.description = description;
     }
 
-    public Set<Medic> getMedics() {
-        return medics;
-    }
-
-    public void setMedics(Set<Medic> medics) {
-        this.medics = medics;
-    }
+//    public Set<Medic> getMedics() {
+//        return medics;
+//    }
+//
+//    public void setMedics(Set<Medic> medics) {
+//        this.medics = medics;
+//    }
 }
