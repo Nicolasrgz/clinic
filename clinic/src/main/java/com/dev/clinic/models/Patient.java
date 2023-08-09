@@ -64,4 +64,9 @@ public class Patient {
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
+
+    public void addClinicHistory(ClinicHistory clinicHistory){
+        this.clinicHistory = clinicHistory;
+        clinicHistory.setPatient(this);
+    }
 }

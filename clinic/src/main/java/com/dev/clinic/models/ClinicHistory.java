@@ -50,7 +50,6 @@ public class ClinicHistory {
         return creationDate;
     }
 
-
     public String getFullNameMedic() {
         return fullNameMedic;
     }
@@ -74,4 +73,13 @@ public class ClinicHistory {
     public void setObservation(String observation) {
         this.observation = observation;
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
 }
