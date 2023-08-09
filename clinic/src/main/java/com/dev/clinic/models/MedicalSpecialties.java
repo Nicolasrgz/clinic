@@ -3,6 +3,7 @@ package com.dev.clinic.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,8 @@ public class MedicalSpecialties {
     private String name;
     private String description;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    private Set<Medic> medics;
+    @ManyToMany(mappedBy = "medicalSpecialties")
+    private Set<Medic> medics = new HashSet<>();
 
     public MedicalSpecialties() {
     }
@@ -46,11 +47,22 @@ public class MedicalSpecialties {
         this.description = description;
     }
 
-//    public Set<Medic> getMedics() {
-//        return medics;
-//    }
-//
-//    public void setMedics(Set<Medic> medics) {
-//        this.medics = medics;
-//    }
+    public Set<Medic> getMedics() {
+        return medics;
+    }
+
+    public void setMedics(Set<Medic> medics) {
+        this.medics = medics;
+    }
+
+    public void addMedic(Medic medic) {
+        this.medics.add(medic);
+        medic.getMedicalSpecialties().add(this);
+    }
+
+    public void removeMedic(Medic medic) {
+        this.medics.remove(medic);
+        medic.getMedicalSpecialties().remove(this);
+    }
+
 }

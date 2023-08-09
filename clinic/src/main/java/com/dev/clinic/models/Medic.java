@@ -17,8 +17,9 @@ public class Medic {
     private String lastName;
     private Integer age;
     private String registrationNumber;
-//    @ManyToMany(mappedBy = "medic", fetch = FetchType.EAGER)
-//    private Set<MedicalSpecialties>medicalSpecialties = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<MedicalSpecialties> medicalSpecialties = new HashSet<>();
 
     public Medic() {
     }
@@ -66,11 +67,22 @@ public class Medic {
         this.registrationNumber = registrationNumber;
     }
 
-//    public Set<MedicalSpecialties> getMedicalSpecialties() {
-//        return medicalSpecialties;
-//    }
-//
-//    public void setMedicalSpecialties(Set<MedicalSpecialties> medicalSpecialties) {
-//        this.medicalSpecialties = medicalSpecialties;
-//    }
+    public Set<MedicalSpecialties> getMedicalSpecialties() {
+        return medicalSpecialties;
+    }
+
+    public void setMedicalSpecialties(Set<MedicalSpecialties> medicalSpecialties) {
+        this.medicalSpecialties = medicalSpecialties;
+    }
+
+    public void addMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
+        this.medicalSpecialties.add(medicalSpecialty);
+        medicalSpecialty.getMedics().add(this);
+    }
+
+    public void removeMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
+        this.medicalSpecialties.remove(medicalSpecialty);
+        medicalSpecialty.getMedics().remove(this);
+    }
+
 }
