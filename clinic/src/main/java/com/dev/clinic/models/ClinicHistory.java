@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class ClinicHistory {
@@ -21,6 +23,8 @@ public class ClinicHistory {
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+    @OneToMany(mappedBy = "clinicHistory", fetch = FetchType.EAGER)
+    private Set<MedicalAppointments> medicalAppointments = new HashSet<>();
 
     public ClinicHistory() {
     }
@@ -37,6 +41,13 @@ public class ClinicHistory {
         return id;
     }
 
+    public Set<MedicalAppointments> getMedicalAppointments() {
+        return medicalAppointments;
+    }
+
+    public void setMedicalAppointments(Set<MedicalAppointments> medicalAppointments) {
+        this.medicalAppointments = medicalAppointments;
+    }
 
     public String getFullName() {
         return fullName;
@@ -80,6 +91,11 @@ public class ClinicHistory {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public void addMedicalAppointments(MedicalAppointments medicalAppointment){
+        medicalAppointment.setClinicHistory(this);
+        medicalAppointments.add(medicalAppointment);
     }
 
 }

@@ -20,6 +20,8 @@ public class Medic {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<MedicalSpecialties> medicalSpecialties = new HashSet<>();
+    @OneToMany(mappedBy = "medic", fetch = FetchType.EAGER)
+    private Set<MedicalAppointments>medicalAppointments = new HashSet<>();
 
     public Medic() {
     }
@@ -33,6 +35,14 @@ public class Medic {
 
     public long getId() {
         return id;
+    }
+
+    public Set<MedicalAppointments> getMedicalAppointments() {
+        return medicalAppointments;
+    }
+
+    public void setMedicalAppointments(Set<MedicalAppointments> medicalAppointments) {
+        this.medicalAppointments = medicalAppointments;
     }
 
     public String getName() {
@@ -83,6 +93,11 @@ public class Medic {
     public void removeMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
         this.medicalSpecialties.remove(medicalSpecialty);
         medicalSpecialty.getMedics().remove(this);
+    }
+
+    public void addMedicalAppointment(MedicalAppointments medicalAppointment){
+       medicalAppointment.setMedic(this);
+       medicalAppointments.add(medicalAppointment);
     }
 
 }

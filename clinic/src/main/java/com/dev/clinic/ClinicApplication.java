@@ -1,13 +1,7 @@
 package com.dev.clinic;
 
-import com.dev.clinic.models.ClinicHistory;
-import com.dev.clinic.models.Medic;
-import com.dev.clinic.models.MedicalSpecialties;
-import com.dev.clinic.models.Patient;
-import com.dev.clinic.repositories.ClinicHistoryRepository;
-import com.dev.clinic.repositories.MedicRepository;
-import com.dev.clinic.repositories.MedicalSpecialtiesRepository;
-import com.dev.clinic.repositories.PatientRepository;
+import com.dev.clinic.models.*;
+import com.dev.clinic.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +17,7 @@ public class ClinicApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(PatientRepository patientRepository, ClinicHistoryRepository clinicHistoryRepository, MedicRepository medicRepository, MedicalSpecialtiesRepository medicalSpecialtiesRepository) {
+	public CommandLineRunner initData(PatientRepository patientRepository, ClinicHistoryRepository clinicHistoryRepository, MedicRepository medicRepository, MedicalSpecialtiesRepository medicalSpecialtiesRepository, MedicalAppointmentsRepository medicalAppointmentsRepository) {
 		return args -> {
 			//one to one
 			Patient patient = new Patient("nicolas", "gonzalez", 44994133, "klasdjds");
@@ -60,6 +54,24 @@ public class ClinicApplication {
 			cardiology.addMedic(drPepe);
 			cardiology.addMedic(drJose);
 
+			MedicalAppointments revision1 = new MedicalAppointments(LocalDate.now(), "revision");
+			MedicalAppointments revision2 = new MedicalAppointments(LocalDate.now(), "revision");
+			MedicalAppointments revision3 = new MedicalAppointments(LocalDate.now(), "revision");
+			drJake.addMedicalAppointment(revision1);
+			clinicHistory.addMedicalAppointments(revision1);
+
+			drPepe.addMedicalAppointment(revision2);
+			clinicHistory.addMedicalAppointments(revision2);
+
+			drJose.addMedicalAppointment(revision3);
+			clinicHistory.addMedicalAppointments(revision3);
+
+
+			medicalAppointmentsRepository.save(revision1);
+			medicalAppointmentsRepository.save(revision2);
+			medicalAppointmentsRepository.save(revision3);
+
+
 			medicalSpecialtiesRepository.save(cardiology);
 			medicalSpecialtiesRepository.save(kinesiologist);
 
@@ -67,6 +79,8 @@ public class ClinicApplication {
 			medicRepository.save(drJose);
 			medicRepository.save(drJake);
 			medicRepository.save(drKeo);
+
+
 		};
 	}
 
