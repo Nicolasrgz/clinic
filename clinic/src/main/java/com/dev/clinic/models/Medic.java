@@ -22,6 +22,8 @@ public class Medic {
     private Set<MedicalSpecialties> medicalSpecialties = new HashSet<>();
     @OneToMany(mappedBy = "medic", fetch = FetchType.EAGER)
     private Set<MedicalAppointments>medicalAppointments = new HashSet<>();
+    @OneToMany(mappedBy = "medic", fetch = FetchType.EAGER)
+    private Set<Prescription> prescriptions = new HashSet<>();
 
     public Medic() {
     }
@@ -35,6 +37,14 @@ public class Medic {
 
     public long getId() {
         return id;
+    }
+
+    public Set<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(Set<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
     }
 
     public Set<MedicalAppointments> getMedicalAppointments() {
@@ -100,4 +110,8 @@ public class Medic {
        medicalAppointments.add(medicalAppointment);
     }
 
+    public void addPrescription(Prescription prescription){
+        prescription.setMedic(this);
+        prescriptions.add(prescription);
+    }
 }

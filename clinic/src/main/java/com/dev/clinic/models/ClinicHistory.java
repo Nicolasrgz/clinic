@@ -25,6 +25,8 @@ public class ClinicHistory {
     private Patient patient;
     @OneToMany(mappedBy = "clinicHistory", fetch = FetchType.EAGER)
     private Set<MedicalAppointments> medicalAppointments = new HashSet<>();
+    @OneToMany(mappedBy = "clinicHistory", fetch = FetchType.EAGER)
+    private Set<Prescription> prescriptions = new HashSet<>();
 
     public ClinicHistory() {
     }
@@ -39,6 +41,14 @@ public class ClinicHistory {
 
     public long getId() {
         return id;
+    }
+
+    public Set<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(Set<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
     }
 
     public Set<MedicalAppointments> getMedicalAppointments() {
@@ -98,4 +108,8 @@ public class ClinicHistory {
         medicalAppointments.add(medicalAppointment);
     }
 
+    public void addPrescription(Prescription prescription){
+        prescription.setClinicHistory(this);
+        prescriptions.add(prescription);
+    }
 }
