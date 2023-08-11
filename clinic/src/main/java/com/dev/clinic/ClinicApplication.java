@@ -51,8 +51,8 @@ public class ClinicApplication {
 
 			MedicalSpecialties cardiology = new MedicalSpecialties("cardiology", "A");
 			MedicalSpecialties kinesiologist = new MedicalSpecialties("kinesiologist", "B");
-			MedicalSpecialties pediatrician = new MedicalSpecialties("pediatrician", "c");
-			MedicalSpecialties urologist = new MedicalSpecialties("urologist", "d");
+			MedicalSpecialties pediatrician = new MedicalSpecialties("pediatrician", "C");
+			MedicalSpecialties urologist = new MedicalSpecialties("urologist", "D");
 
 			drPepe.addMedicalSpecialty(cardiology);
 			drJose.addMedicalSpecialty(cardiology);
@@ -100,9 +100,10 @@ public class ClinicApplication {
 			medicalAppointmentsRepository.save(revision2);
 			medicalAppointmentsRepository.save(revision3);
 
-
 			medicalSpecialtiesRepository.save(cardiology);
 			medicalSpecialtiesRepository.save(kinesiologist);
+			medicalSpecialtiesRepository.save(pediatrician);
+			medicalSpecialtiesRepository.save(urologist);
 
 			medicRepository.save(drPepe);
 			medicRepository.save(drJose);
