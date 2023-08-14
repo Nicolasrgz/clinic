@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/web/style/style.css">
+    <link rel="shortcut icon" href="/web/images/logo clinic.jpeg" type="image/x-icon">
+    <title>Armendia clinic</title>
+</head>
+<body>
+    <div class="layout" id="app">
+        <header>
+            <nav class="d-flex justify-content-between">
+                <div class="d-flex justify-content-center align-items-center">
+                    <img class="img-header" src="/web/images/logo clinic.jpeg" alt="logo clinica">
+                    <h3>ARMENDIA</h3>
+                </div>
+                <div class="d-flex">
+                    <div class="d-flex justify-content-center align-items-center m-4">
+                        <a href=""><h4>contacto</h4></a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center m-4">
+                        <a href=""><h4>especialidades</h4></a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center m-4">
+                        <a href=""><h4>¿quienes somos?</h4></a>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="d-flex justify-content-center align-items-center m-1">
+                        <button class="button-login d-flex justify-content-center align-items-center"> iniciar sesion
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center m-1">
+                        <button class="button-register d-flex justify-content-center align-items-center"> registrarse
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="section-carrousel">
+                <div id="carouselExampleInterval carrousel-index" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/web/images/banner-medico-medico-estetoscopio.jpg" class="img-carrousel-index" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/web/images/doctor-feliz-estrechando-mano-esposa-su-paciente-mayor-clinica-medica.jpg" class="img-carrousel-index" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/web/images/joven-medico-apoyando-su-paciente.jpg" class="img-carrousel-index" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="/web/images/medicos-investigacion-infecciosa-concepto-covid-satisfacen-joven-doctora-asiatica-reciben-buena-res.jpg" class="img-carrousel-index" alt="...">
+                          </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="section-medicos">
+                <div class="">
+                    <h1>ARMENDIA: CLINICA LIDER EN EL CUIDADO DE LA SALUD</h1>
+                    <h2>Hay un medico dispuesto a ayudarlo en lo que necesite.</h2>
+                </div>
+                <div>
+                    <img class="img-index-secion" src="/web/images/vista-superior-dia-trabajadores-medicos-atencion-medica-uniforme-medicina.jpg" alt="">
+                </div>
+                <div>
+                    <h3>nustros medicos son profesionales altamente capacitados</h3>
+                </div>
+            </section>
+
+            <section id="section-clinic">
+                <div>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum porro architecto labore nam quidem illo velit molestias laudantium eaque aspernatur, quo accusantium iste nulla, accusamus, fuga perspiciatis consectetur. Ipsam, eius.</h2>
+                </div>
+                <div>
+                    <img class="img-index-secion" src="/web/images/vista-superior-dia-trabajadores-medicos-atencion-medica-uniforme-medicina.jpg" alt="">
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>¿quieres empezar a disfrutar de nuestros servicios?</h2>
+                    <h3>registrese y reciba un 20% de descuento en su proxima consulta</h3>
+                </div>
+                <div>
+                    <img class="img-index-secion" src="/web/images/doctor-que-trabaja-computadora-portatil-que-escribe-papeleo-fondo-hospital.jpg" alt="">
+                </div>
+                <div>
+                    <button class="button-register d-flex justify-content-center align-items-center"> registrarse
+                    </button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div>
+                <p>hola</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/web/Vue/index.Vue"></script>
+</body>
+</html>
