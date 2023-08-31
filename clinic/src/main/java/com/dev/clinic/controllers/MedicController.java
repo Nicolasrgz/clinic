@@ -2,6 +2,7 @@ package com.dev.clinic.controllers;
 
 import com.dev.clinic.dtos.MedicDTO;
 import com.dev.clinic.repositories.MedicRepository;
+import com.dev.clinic.services.service.MedicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,11 @@ import java.util.stream.Collectors;
 public class MedicController {
 
     @Autowired
-    private MedicRepository medicRepository;
+    private MedicService medicService;
 
     @GetMapping("/medics")
     public List<MedicDTO> getMedics(){
-        return medicRepository.findAll().stream().map(MedicDTO::new).collect(Collectors.toList());
+        return medicService.getMedics();
     }
 
 }
