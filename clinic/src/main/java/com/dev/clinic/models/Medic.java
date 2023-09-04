@@ -13,13 +13,8 @@ public class Medic {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String name;
-    private String lastName;
+    private String name, lastName, email, password, registrationNumber;
     private Integer age;
-    private String email;
-    private String password;
-    private String registrationNumber;
-
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<MedicalSpecialties> medicalSpecialties = new HashSet<>();
     @OneToMany(mappedBy = "medic", fetch = FetchType.EAGER)

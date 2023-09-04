@@ -5,10 +5,8 @@ import com.dev.clinic.models.Patient;
 public class PatientDTO {
 
     private long id;
-    private String name;
-    private String lastName;
+    private String name, profilePicture, lastName;
     private Integer dni;
-    private String profilePicture;
 
     public PatientDTO() {
     }

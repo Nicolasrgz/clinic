@@ -14,11 +14,8 @@ public class ClinicHistory {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String fullName;
+    private String fullName, fullNameMedic, diagnostic, observation;
     private LocalDate creationDate;
-    private String fullNameMedic;
-    private String diagnostic;
-    private String observation;
 
     @OneToOne
     @JoinColumn(name = "patient_id")

@@ -6,8 +6,7 @@ import java.util.Set;
 
 public class MedicalSpecialtiesDTO {
     private long id;
-    private String name;
-    private String description;
+    private String name,description;
 
     public MedicalSpecialtiesDTO() {
     }

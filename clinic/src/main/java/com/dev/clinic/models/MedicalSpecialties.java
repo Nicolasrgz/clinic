@@ -13,9 +13,7 @@ public class MedicalSpecialties {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String name;
-    private String description;
-
+    private String name, description;
     @ManyToMany(mappedBy = "medicalSpecialties")
     private Set<Medic> medics = new HashSet<>();
 

@@ -5,6 +5,7 @@ import com.dev.clinic.dtos.RegisterMedicDTO;
 import com.dev.clinic.models.Medic;
 import com.dev.clinic.repositories.MedicRepository;
 import com.dev.clinic.services.service.MedicService;
+import com.dev.clinic.utils.MedicUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,15 +52,14 @@ public class MedicController {
 
         String registrationNumber;
         do {
-            registrationNumber = "ABC-" + (long) ((Math.random() * (99999999 - 10000000)) + 10000000);
-        }while(medicRepository.findByRegistrationNumber(registrationNumber) != null);
+            registrationNumber = MedicUtils.getRegistrationNumber();
+        }while(medicService.findByRegistrationNumber(registrationNumber) != null);
 
         //falta encriptar contraseñas
         Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
-        medicRepository.save(medic);
+        medicService.saveMedic(medic);
 
         return ResponseEntity.ok().build();
     }
-
 
 }

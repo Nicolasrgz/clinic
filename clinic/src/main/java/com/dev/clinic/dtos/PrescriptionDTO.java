@@ -5,11 +5,7 @@ import com.dev.clinic.models.Prescription;
 public class PrescriptionDTO {
 
     private long id;
-    private String fullNameMedic;
-    private String fullNamePatient;
-    private String medicationPrescript;
-    private String registrationNumber;
-    private String firma;
+    private String fullNameMedic, firma,fullNamePatient, medicationPrescript,registrationNumber;
 
     public PrescriptionDTO() {
     }

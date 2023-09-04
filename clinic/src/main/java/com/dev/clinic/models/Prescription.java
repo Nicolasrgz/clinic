@@ -11,11 +11,7 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String fullNameMedic;
-    private String fullNamePatient;
-    private String medicationPrescript;
-    private String registrationNumber;
-    private String firma;
+    private String fullNameMedic, fullNamePatient, medicationPrescript, registrationNumber, firma;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clinicHistory")
     private ClinicHistory clinicHistory;

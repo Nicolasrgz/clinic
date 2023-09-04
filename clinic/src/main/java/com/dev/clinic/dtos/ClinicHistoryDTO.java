@@ -6,15 +6,11 @@ import java.time.LocalDate;
 
 public class ClinicHistoryDTO {
     private long id;
-    private String fullName;
+    private String fullName, fullNameMedic, diagnostic, observation;
     private LocalDate creationDate;
-    private String fullNameMedic;
-    private String diagnostic;
-    private String observation;
 
     public ClinicHistoryDTO() {
     }
-
     public ClinicHistoryDTO(ClinicHistory clinicHistory) {
         this.fullName = clinicHistory.getFullName();
         this.creationDate = clinicHistory.getCreationDate();

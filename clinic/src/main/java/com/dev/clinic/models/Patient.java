@@ -11,11 +11,8 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String name;
-    private String lastName;
+    private String name, lastName, profilePicture, email;
     private Integer dni;
-    private String profilePicture;
-    private String email;
 
     @OneToOne(mappedBy = "patient")
     private ClinicHistory clinicHistory;

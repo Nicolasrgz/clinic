@@ -4,11 +4,8 @@ import com.dev.clinic.models.Medic;
 
 public class RegisterMedicDTO {
     private long id;
-    private String name;
-    private String lastName;
+    private String name,lastName, email, password;
     private Integer age;
-    private String email;
-    private String password;
 
     public RegisterMedicDTO() {
     }

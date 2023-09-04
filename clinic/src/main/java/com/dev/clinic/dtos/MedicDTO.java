@@ -8,10 +8,8 @@ import java.util.stream.Collectors;
 public class MedicDTO {
 
     private long id;
-    private String name;
-    private String lastName;
+    private String name, lastName, registrationNumber;
     private Integer age;
-    private String registrationNumber;
     private Set<MedicalSpecialtiesDTO> medicalSpecialties;
 
     public MedicDTO() {
