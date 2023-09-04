@@ -2,6 +2,7 @@ package com.dev.clinic.controllers;
 
 import com.dev.clinic.dtos.MedicDTO;
 import com.dev.clinic.dtos.RegisterMedicDTO;
+import com.dev.clinic.models.Medic;
 import com.dev.clinic.repositories.MedicRepository;
 import com.dev.clinic.services.service.MedicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -18,6 +18,9 @@ public class MedicController {
 
     @Autowired
     private MedicService medicService;
+
+    @Autowired
+    private MedicRepository medicRepository;
 
     @GetMapping("/medics")
     public List<MedicDTO> getMedics(){
@@ -46,9 +49,14 @@ public class MedicController {
             return new ResponseEntity<>("The password must be at least 8 characters long", HttpStatus.FORBIDDEN);
         }
 
+        String registrationNumber;
+        do {
+            registrationNumber = "ABC-" + (long) ((Math.random() * (99999999 - 10000000)) + 10000000);
+        }while(medicRepository.findByRegistrationNumber(registrationNumber) != null);
 
-
-
+        //falta encriptar contraseñas
+        Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
+        medicRepository.save(medic);
 
         return ResponseEntity.ok().build();
     }
