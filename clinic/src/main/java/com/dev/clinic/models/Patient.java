@@ -11,8 +11,8 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String name, lastName, profilePicture, email;
-    private Integer dni;
+    private String name, lastName, profilePicture, email, password;
+    private Integer dni, age;
 
     @OneToOne(mappedBy = "patient")
     private ClinicHistory clinicHistory;
@@ -20,12 +20,13 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String lastName, Integer dni, String profilePicture, String email) {
+    public Patient(String name, String lastName, Integer dni, Integer age, String email, String password) {
         this.name = name;
         this.lastName = lastName;
         this.dni = dni;
-        this.profilePicture = profilePicture;
+        this.age = age;
         this.email= email;
+        this.password = password;
     }
 
     public long getId() {
@@ -78,6 +79,21 @@ public class Patient {
 
     public void setClinicHistory(ClinicHistory clinicHistory) {
         this.clinicHistory = clinicHistory;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public void addClinicHistory(ClinicHistory clinicHistory){

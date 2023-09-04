@@ -22,9 +22,9 @@ public class ClinicApplication {
 									  PrescriptionRepository prescriptionRepository) {
 		return args -> {
 			//one to one
-			Patient patient = new Patient("nicolas", "gonzalez", 44994133, "klasdjds", "nicolas@gmail.com");
-			Patient patient2 = new Patient("alejandro", "franco", 43994133, "klasdjdsadas", "ale@gmail.com");
-			Patient patient3 = new Patient("juan", "galarza", 45994133, "klasdjdssdasds", "juan@gmail.com");
+			Patient patient = new Patient("nicolas", "gonzalez", 44994133, 20, "nicolas@gmail.com", "1234");
+			Patient patient2 = new Patient("alejandro", "franco", 43994133, 21, "ale@gmail.com", "1234");
+			Patient patient3 = new Patient("juan", "galarza", 45994133, 19, "juan@gmail.com", "1234");
 			patientRepository.save(patient);
 			patientRepository.save(patient2);
 			patientRepository.save(patient3);

@@ -31,4 +31,9 @@ public class MedicImplement implements MedicService {
     public Medic findByRegistrationNumber(String registrationNumber) {
         return medicRepository.findByRegistrationNumber(registrationNumber);
     }
+
+    @Override
+    public Medic findByEmail(String email) {
+        return medicRepository.findByEmail(email);
+    }
 }

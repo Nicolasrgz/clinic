@@ -10,4 +10,5 @@ public interface MedicService {
     List<MedicDTO>getMedics();
     void saveMedic (Medic medic);
     Medic findByRegistrationNumber (String registrationNumber);
+    Medic findByEmail(String email);
 }
