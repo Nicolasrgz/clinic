@@ -1,7 +1,6 @@
 package com.dev.clinic.dtos;
 
 import com.dev.clinic.models.Medic;
-import com.dev.clinic.models.MedicalSpecialties;
 
 import java.util.Set;
 import java.util.stream.Collectors;

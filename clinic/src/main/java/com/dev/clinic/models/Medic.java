@@ -16,6 +16,8 @@ public class Medic {
     private String name;
     private String lastName;
     private Integer age;
+    private String email;
+    private String password;
     private String registrationNumber;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -28,31 +30,17 @@ public class Medic {
     public Medic() {
     }
 
-    public Medic(String name, String lastName, Integer age, String registrationNumber) {
+    public Medic(String name, String lastName, Integer age, String email, String registrationNumber,String password) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
+        this.email = email;
         this.registrationNumber = registrationNumber;
+        this.password = password;
     }
 
     public long getId() {
         return id;
-    }
-
-    public Set<Prescription> getPrescriptions() {
-        return prescriptions;
-    }
-
-    public void setPrescriptions(Set<Prescription> prescriptions) {
-        this.prescriptions = prescriptions;
-    }
-
-    public Set<MedicalAppointments> getMedicalAppointments() {
-        return medicalAppointments;
-    }
-
-    public void setMedicalAppointments(Set<MedicalAppointments> medicalAppointments) {
-        this.medicalAppointments = medicalAppointments;
     }
 
     public String getName() {
@@ -79,6 +67,14 @@ public class Medic {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getRegistrationNumber() {
         return registrationNumber;
     }
@@ -95,9 +91,33 @@ public class Medic {
         this.medicalSpecialties = medicalSpecialties;
     }
 
+    public Set<MedicalAppointments> getMedicalAppointments() {
+        return medicalAppointments;
+    }
+
+    public void setMedicalAppointments(Set<MedicalAppointments> medicalAppointments) {
+        this.medicalAppointments = medicalAppointments;
+    }
+
+    public Set<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(Set<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
     public void addMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
         this.medicalSpecialties.add(medicalSpecialty);
         medicalSpecialty.getMedics().add(this);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void removeMedicalSpecialty(MedicalSpecialties medicalSpecialty) {

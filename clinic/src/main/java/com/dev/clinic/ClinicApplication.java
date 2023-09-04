@@ -21,9 +21,9 @@ public class ClinicApplication {
 									  PrescriptionRepository prescriptionRepository) {
 		return args -> {
 			//one to one
-			Patient patient = new Patient("nicolas", "gonzalez", 44994133, "klasdjds");
-			Patient patient2 = new Patient("alejandro", "franco", 43994133, "klasdjdsadas");
-			Patient patient3 = new Patient("juan", "galarza", 45994133, "klasdjdssdasds");
+			Patient patient = new Patient("nicolas", "gonzalez", 44994133, "klasdjds", "nicolas@gmail.com");
+			Patient patient2 = new Patient("alejandro", "franco", 43994133, "klasdjdsadas", "ale@gmail.com");
+			Patient patient3 = new Patient("juan", "galarza", 45994133, "klasdjdssdasds", "juan@gmail.com");
 			patientRepository.save(patient);
 			patientRepository.save(patient2);
 			patientRepository.save(patient3);
@@ -40,10 +40,10 @@ public class ClinicApplication {
 			clinicHistoryRepository.save(clinicHistoryJuan);
 
 			//many to many
-			Medic drPepe = new Medic("pepe", "gomez", 40, "453-567-2");
-			Medic drJose = new Medic("jose", "perez", 40, "453-567-2");
-			Medic drJake = new Medic("jake", "gonzalez", 40, "453-567-2");
-			Medic drKeo = new Medic("keo", "kidd", 40, "453-567-2");
+			Medic drPepe = new Medic("pepe", "gomez", 40, "453-567-2", "pepe@gmail.com", "1234");
+			Medic drJose = new Medic("jose", "perez", 40, "453-567-2", "jose@gmail.com", "1234");
+			Medic drJake = new Medic("jake", "gonzalez", 40, "453-567-2", "jake@gmail.com", "1234");
+			Medic drKeo = new Medic("keo", "kidd", 40, "453-567-2", "keo@gmail.com", "1234");
 			medicRepository.save(drPepe);
 			medicRepository.save(drJose);
 			medicRepository.save(drJake);

@@ -15,6 +15,7 @@ public class Patient {
     private String lastName;
     private Integer dni;
     private String profilePicture;
+    private String email;
 
     @OneToOne(mappedBy = "patient")
     private ClinicHistory clinicHistory;
@@ -22,11 +23,12 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String lastName, Integer dni, String profilePicture) {
+    public Patient(String name, String lastName, Integer dni, String profilePicture, String email) {
         this.name = name;
         this.lastName = lastName;
         this.dni = dni;
         this.profilePicture = profilePicture;
+        this.email= email;
     }
 
     public long getId() {
@@ -63,6 +65,22 @@ public class Patient {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public ClinicHistory getClinicHistory() {
+        return clinicHistory;
+    }
+
+    public void setClinicHistory(ClinicHistory clinicHistory) {
+        this.clinicHistory = clinicHistory;
     }
 
     public void addClinicHistory(ClinicHistory clinicHistory){
