@@ -31,6 +31,8 @@ public class PatientController {
     @PostMapping("/patient/register")
     public ResponseEntity<Object> patientRegister(@RequestBody RegisterPatientDTO registerPatientDTO){
 
+
+
         if (registerPatientDTO.getName().isBlank()){
             return new ResponseEntity<>("The name field is incomplete", HttpStatus.FORBIDDEN);
         }
@@ -64,5 +66,7 @@ public class PatientController {
 
         return ResponseEntity.ok().build();
     }
+
+
 
 }
