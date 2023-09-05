@@ -11,7 +11,7 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String name, lastName, profilePicture, email, password;
+    private String name, lastName, email, password;
     private Integer dni, age;
 
     @OneToOne(mappedBy = "patient")
@@ -55,14 +55,6 @@ public class Patient {
 
     public void setDni(Integer dni) {
         this.dni = dni;
-    }
-
-    public String getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
     }
 
     public String getEmail() {

@@ -15,7 +15,6 @@ public class PatientDTO {
         this.name = patient.getName();
         this.lastName = patient.getLastName();
         this.dni = patient.getDni();
-        this.profilePicture = patient.getProfilePicture();
     }
 
     public long getId() {
@@ -34,7 +33,4 @@ public class PatientDTO {
         return dni;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
-    }
 }
