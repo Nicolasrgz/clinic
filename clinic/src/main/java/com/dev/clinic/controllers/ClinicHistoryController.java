@@ -2,7 +2,9 @@ package com.dev.clinic.controllers;
 
 import com.dev.clinic.dtos.ClinicHistoryDTO;
 import com.dev.clinic.models.ClinicHistory;
+import com.dev.clinic.models.Patient;
 import com.dev.clinic.repositories.ClinicHistoryRepository;
+import com.dev.clinic.repositories.PatientRepository;
 import com.dev.clinic.services.service.ClinicHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ public class ClinicHistoryController {
     private ClinicHistoryService clinicHistoryService;
     @Autowired
     private ClinicHistoryRepository clinicHistoryRepository;
+    @Autowired
+    private PatientRepository patientRepository;
 
     @GetMapping("histories")
     public List<ClinicHistoryDTO>getClinicHistories(){
@@ -28,6 +32,14 @@ public class ClinicHistoryController {
     @PostMapping("/history/clinic")
     public ResponseEntity<Object> creationHistoryClinic(@RequestBody ClinicHistoryDTO clinicHistoryDTO){
 
+        Patient patient = patientRepository.findByDni(clinicHistoryDTO.getDni());
+
+        if (patient == null) {
+            return new ResponseEntity<>("No patient was found with the ID provided", HttpStatus.NOT_FOUND);
+        }
+        if (patient.getClinicHistory() != null) {
+            return new ResponseEntity<>("The patient already has an associated clinical history", HttpStatus.CONFLICT);
+        }
         if (clinicHistoryDTO.getFullName().isBlank()){
             return new ResponseEntity<>("The full name field is incomplete", HttpStatus.BAD_REQUEST);
         }
@@ -44,8 +56,11 @@ public class ClinicHistoryController {
             return new ResponseEntity<>("The observation field is incomplete", HttpStatus.BAD_REQUEST);
         }
 
-        ClinicHistory clinicHistory = new ClinicHistory(clinicHistoryDTO.getFullName(), clinicHistoryDTO.getCreationDate(), clinicHistoryDTO.getFullNameMedic(), clinicHistoryDTO.getDiagnostic(), clinicHistoryDTO.getObservation());
+        ClinicHistory clinicHistory = new ClinicHistory(clinicHistoryDTO.getFullName(), clinicHistoryDTO.getCreationDate(), clinicHistoryDTO.getFullNameMedic(), clinicHistoryDTO.getDiagnostic(), clinicHistoryDTO.getObservation(), patient.getDni());
+        patient.addClinicHistory(clinicHistory);
         clinicHistoryRepository.save(clinicHistory);
+        patientRepository.save(patient);
+
 
         return ResponseEntity.ok().build();
     }

@@ -29,9 +29,9 @@ public class ClinicApplication {
 			patientRepository.save(patient2);
 			patientRepository.save(patient3);
 
-			ClinicHistory clinicHistory = new ClinicHistory(patient.getLastName() + " " + patient.getName(), LocalDate.now(), "doctor pepe", "cancer","se puede curar");
-			ClinicHistory clinicHistoryAle = new ClinicHistory(patient2.getLastName() + " " + patient2.getName(), LocalDate.now(), "doctor pepe", "pelado","no se puede curar");
-			ClinicHistory clinicHistoryJuan = new ClinicHistory(patient3.getLastName() + " " + patient3.getName(), LocalDate.now(), "doctor pepe", "perro","no se puede curar");
+			ClinicHistory clinicHistory = new ClinicHistory(patient.getLastName() + " " + patient.getName(), LocalDate.now(), "doctor pepe", "cancer","se puede curar", 44994133);
+			ClinicHistory clinicHistoryAle = new ClinicHistory(patient2.getLastName() + " " + patient2.getName(), LocalDate.now(), "doctor pepe", "pelado","no se puede curar",43994133);
+			ClinicHistory clinicHistoryJuan = new ClinicHistory(patient3.getLastName() + " " + patient3.getName(), LocalDate.now(), "doctor pepe", "perro","no se puede curar", 45994133);
 			patient.addClinicHistory(clinicHistory);
 			patient2.addClinicHistory(clinicHistoryAle);
 			patient3.addClinicHistory(clinicHistoryJuan);
@@ -41,10 +41,10 @@ public class ClinicApplication {
 			clinicHistoryRepository.save(clinicHistoryJuan);
 
 			//many to many
-			Medic drPepe = new Medic("pepe", "gomez", 40, "453-567-2", "pepe@gmail.com", "1234");
-			Medic drJose = new Medic("jose", "perez", 40, "453-567-2", "jose@gmail.com", "1234");
-			Medic drJake = new Medic("jake", "gonzalez", 40, "453-567-2", "jake@gmail.com", "1234");
-			Medic drKeo = new Medic("keo", "kidd", 40, "453-567-2", "keo@gmail.com", "1234");
+			Medic drPepe = new Medic("pepe", "gomez", 40, "pepe@gmail.com", "453-567-2", "1234");
+			Medic drJose = new Medic("jose", "perez", 40, "jose@gmail.com", "453-567-2", "1234");
+			Medic drJake = new Medic("jake", "gonzalez", 40, "jake@gmail.com", "453-567-2", "1234");
+			Medic drKeo = new Medic("keo", "kidd", 40, "keo@gmail.com", "453-567-2", "1234");
 			medicRepository.save(drPepe);
 			medicRepository.save(drJose);
 			medicRepository.save(drJake);

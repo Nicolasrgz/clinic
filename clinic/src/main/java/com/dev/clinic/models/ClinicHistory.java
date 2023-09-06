@@ -16,6 +16,7 @@ public class ClinicHistory {
     private long id;
     private String fullName, fullNameMedic, diagnostic, observation;
     private LocalDate creationDate;
+    private Integer dni;
 
     @OneToOne
     @JoinColumn(name = "patient_id")
@@ -28,12 +29,13 @@ public class ClinicHistory {
     public ClinicHistory() {
     }
 
-    public ClinicHistory(String fullName, LocalDate creationDate, String fullNameMedic, String diagnostic, String observation) {
+    public ClinicHistory(String fullName, LocalDate creationDate, String fullNameMedic, String diagnostic, String observation, Integer dni) {
         this.fullName = fullName;
         this.creationDate = creationDate;
         this.fullNameMedic = fullNameMedic;
         this.diagnostic = diagnostic;
         this.observation = observation;
+        this.dni = dni;
     }
 
     public long getId() {
@@ -42,6 +44,10 @@ public class ClinicHistory {
 
     public Set<Prescription> getPrescriptions() {
         return prescriptions;
+    }
+
+    public Integer getDni() {
+        return dni;
     }
 
     public void setPrescriptions(Set<Prescription> prescriptions) {
