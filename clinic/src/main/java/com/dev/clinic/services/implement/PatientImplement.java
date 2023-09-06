@@ -30,4 +30,9 @@ public class PatientImplement implements PatientService {
     public void savePatient(Patient patient) {
         patientRepository.save(patient);
     }
+
+    @Override
+    public Patient findByDni(Integer dni) {
+        return patientRepository.findByDni(dni);
+    }
 }

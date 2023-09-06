@@ -6,6 +6,7 @@ import com.dev.clinic.models.Patient;
 import com.dev.clinic.repositories.ClinicHistoryRepository;
 import com.dev.clinic.repositories.PatientRepository;
 import com.dev.clinic.services.service.ClinicHistoryService;
+import com.dev.clinic.services.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ public class ClinicHistoryController {
     @Autowired
     private ClinicHistoryRepository clinicHistoryRepository;
     @Autowired
+    private PatientService patientService;
+    @Autowired
     private PatientRepository patientRepository;
 
     @GetMapping("histories")
@@ -32,7 +35,7 @@ public class ClinicHistoryController {
     @PostMapping("/history/clinic")
     public ResponseEntity<Object> creationHistoryClinic(@RequestBody ClinicHistoryDTO clinicHistoryDTO){
 
-        Patient patient = patientRepository.findByDni(clinicHistoryDTO.getDni());
+        Patient patient = patientService.findByDni(clinicHistoryDTO.getDni());
 
         if (patient == null) {
             return new ResponseEntity<>("No patient was found with the ID provided", HttpStatus.NOT_FOUND);
@@ -58,9 +61,8 @@ public class ClinicHistoryController {
 
         ClinicHistory clinicHistory = new ClinicHistory(clinicHistoryDTO.getFullName(), clinicHistoryDTO.getCreationDate(), clinicHistoryDTO.getFullNameMedic(), clinicHistoryDTO.getDiagnostic(), clinicHistoryDTO.getObservation(), patient.getDni());
         patient.addClinicHistory(clinicHistory);
-        clinicHistoryRepository.save(clinicHistory);
-        patientRepository.save(patient);
-
+        clinicHistoryService.saveClinicHistory(clinicHistory);
+        patientService.savePatient(patient);
 
         return ResponseEntity.ok().build();
     }

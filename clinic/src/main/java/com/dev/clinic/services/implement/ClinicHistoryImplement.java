@@ -20,4 +20,9 @@ public class ClinicHistoryImplement implements ClinicHistoryService {
     public List<ClinicHistoryDTO> getClinicHistories() {
         return clinicHistoryRepository.findAll().stream().map(ClinicHistoryDTO::new).collect(Collectors.toList());
     }
+
+    @Override
+    public void saveClinicHistory(ClinicHistory clinicHistory) {
+        clinicHistoryRepository.save(clinicHistory);
+    }
 }

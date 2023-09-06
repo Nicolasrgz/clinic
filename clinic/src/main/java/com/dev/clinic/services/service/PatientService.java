@@ -11,5 +11,7 @@ public interface PatientService {
     List<PatientDTO>getPatients();
     Patient findByEmail(String email);
     void savePatient(Patient patient);
+    Patient findByDni(Integer dni);
+
 
 }
