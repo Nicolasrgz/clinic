@@ -3,6 +3,7 @@ package com.dev.clinic.controllers;
 import com.dev.clinic.dtos.MedicDTO;
 import com.dev.clinic.dtos.RegisterMedicDTO;
 import com.dev.clinic.models.Medic;
+import com.dev.clinic.models.MedicalSpecialties;
 import com.dev.clinic.repositories.MedicRepository;
 import com.dev.clinic.services.service.MedicService;
 import com.dev.clinic.utils.MedicUtils;
@@ -57,6 +58,7 @@ public class MedicController {
 
         //falta encriptar contraseñas
         Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
+        medic.addMedicalSpecialty((MedicalSpecialties) registerMedicDTO.getMedicalSpecialties());
         medicService.saveMedic(medic);
 
         return ResponseEntity.ok().build();
