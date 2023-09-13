@@ -56,14 +56,14 @@ public class ClinicApplication {
 			MedicalSpecialties urologist = new MedicalSpecialties("urologist", "D");
 
 			drPepe.addMedicalSpecialty(cardiology);
-			drJose.addMedicalSpecialty(cardiology);
-			drJake.addMedicalSpecialty(cardiology);
-			drKeo.addMedicalSpecialty(cardiology);
+			drPepe.addMedicalSpecialty(pediatrician);
 			drPepe.addMedicalSpecialty(kinesiologist);
+			drJose.addMedicalSpecialty(cardiology);
 			drJose.addMedicalSpecialty(kinesiologist);
+			drKeo.addMedicalSpecialty(cardiology);
 			drKeo.addMedicalSpecialty(kinesiologist);
 			drKeo.addMedicalSpecialty(urologist);
-			drPepe.addMedicalSpecialty(pediatrician);
+			drJake.addMedicalSpecialty(cardiology);
 
 
 			cardiology.addMedic(drPepe);
