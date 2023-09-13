@@ -41,8 +41,6 @@ public class MedicController {
         if (description.isBlank()){
             return new ResponseEntity<>("the description field is incomplete", HttpStatus.FORBIDDEN);
         }
-
-
         if (registerMedicDTO.getName().isBlank()){
             return new ResponseEntity<>("The name field is incomplete", HttpStatus.FORBIDDEN);
         }
@@ -61,7 +59,6 @@ public class MedicController {
         if (medicRepository.findByEmail(registerMedicDTO.getEmail()) != null){
             return new ResponseEntity<>("The email is in use, please select another", HttpStatus.FORBIDDEN);
         }
-
         if (registerMedicDTO.getPassword().isBlank()){
             return new ResponseEntity<>("The password field is incomplete", HttpStatus.FORBIDDEN);
         }
@@ -72,14 +69,22 @@ public class MedicController {
         String registrationNumber;
         do {
             registrationNumber = MedicUtils.getRegistrationNumber();
-        }while(medicService.findByRegistrationNumber(registrationNumber) != null);
+        } while(medicService.findByRegistrationNumber(registrationNumber) != null);
 
-        //falta encriptar contraseñas
+        // falta encriptar contraseñas
         Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
-        MedicalSpecialties medicalSpecialties = new MedicalSpecialties(nameSpecialty, description);
+
+        MedicalSpecialties medicalSpecialties = medicalSpecialtiesRepository.findByName(nameSpecialty);
+        //Esta es una declaración condicional que verifica si medicalSpecialties es null. Si es null, significa que no se encontró ninguna especialidad con el nombre proporcionado en la base de datos.
+        if (medicalSpecialties == null) {
+            medicalSpecialties = new MedicalSpecialties(nameSpecialty, description);
+            medicalSpecialtiesRepository.save(medicalSpecialties);
+        }
+
         medic.addMedicalSpecialty(medicalSpecialties);
+        medicalSpecialties.addMedic(medic);
+
         medicService.saveMedic(medic);
-        medicalSpecialtiesRepository.save(medicalSpecialties);
 
         return ResponseEntity.ok().build();
     }
