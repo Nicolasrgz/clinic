@@ -45,15 +45,16 @@ public class ClinicApplication {
 			Medic drJose = new Medic("jose", "perez", 40, "jose@gmail.com", "453-567-2", "1234");
 			Medic drJake = new Medic("jake", "gonzalez", 40, "jake@gmail.com", "453-567-2", "1234");
 			Medic drKeo = new Medic("keo", "kidd", 40, "keo@gmail.com", "453-567-2", "1234");
-			medicRepository.save(drPepe);
-			medicRepository.save(drJose);
-			medicRepository.save(drJake);
-			medicRepository.save(drKeo);
 
 			MedicalSpecialties cardiology = new MedicalSpecialties("cardiology", "A");
 			MedicalSpecialties kinesiologist = new MedicalSpecialties("kinesiologist", "B");
 			MedicalSpecialties pediatrician = new MedicalSpecialties("pediatrician", "C");
 			MedicalSpecialties urologist = new MedicalSpecialties("urologist", "D");
+
+			medicRepository.save(drPepe);
+			medicRepository.save(drJose);
+			medicRepository.save(drJake);
+			medicRepository.save(drKeo);
 
 			drPepe.addMedicalSpecialty(cardiology);
 			drPepe.addMedicalSpecialty(pediatrician);

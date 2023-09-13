@@ -57,10 +57,4 @@ public class MedicalSpecialties {
         this.medics.add(medic);
         medic.getMedicalSpecialties().add(this);
     }
-
-    public void removeMedic(Medic medic) {
-        this.medics.remove(medic);
-        medic.getMedicalSpecialties().remove(this);
-    }
-
 }

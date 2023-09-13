@@ -102,11 +102,6 @@ public class Medic {
         this.prescriptions = prescriptions;
     }
 
-    public void addMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
-        this.medicalSpecialties.add(medicalSpecialty);
-        medicalSpecialty.getMedics().add(this);
-    }
-
     public String getPassword() {
         return password;
     }
@@ -115,11 +110,10 @@ public class Medic {
         this.password = password;
     }
 
-    public void removeMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
-        this.medicalSpecialties.remove(medicalSpecialty);
-        medicalSpecialty.getMedics().remove(this);
+    public void addMedicalSpecialty(MedicalSpecialties medicalSpecialty) {
+        this.medicalSpecialties.add(medicalSpecialty);
+        medicalSpecialty.getMedics().add(this);
     }
-
     public void addMedicalAppointment(MedicalAppointments medicalAppointment){
        medicalAppointment.setMedic(this);
        medicalAppointments.add(medicalAppointment);
