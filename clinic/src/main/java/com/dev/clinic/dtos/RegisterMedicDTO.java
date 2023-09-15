@@ -8,27 +8,21 @@ import java.util.stream.Collectors;
 
 public class RegisterMedicDTO {
     private long id;
-    private String name,lastName, email, password;
+    private String name,lastName, email, password, nameSpecialty, description;
     private Integer age;
     private Set<MedicalSpecialtiesDTO> medicalSpecialties;
 
     public RegisterMedicDTO() {
     }
 
-    public RegisterMedicDTO(Medic medic) {
+    public RegisterMedicDTO(Medic medic, String nameSpecialty, String description) {
         this.name = medic.getName();
         this.lastName = medic.getLastName();
         this.age = medic.getAge();
         this.email = medic.getEmail();
         this.password = medic.getPassword();
-        if (medic.getMedicalSpecialties() != null) {
-            this.medicalSpecialties = medic.getMedicalSpecialties()
-                    .stream()
-                    .map(MedicalSpecialtiesDTO::new)
-                    .collect(Collectors.toSet());
-        } else {
-            this.medicalSpecialties = new HashSet<>();
-        }
+        this.nameSpecialty = nameSpecialty;
+        this.description = description;
     }
 
     public long getId() {
@@ -53,5 +47,13 @@ public class RegisterMedicDTO {
     }
     public String getPassword() {
         return password;
+    }
+
+    public String getNameSpecialty() {
+        return nameSpecialty;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

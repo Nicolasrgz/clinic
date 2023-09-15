@@ -33,12 +33,12 @@ public class MedicController {
     }
 
     @PostMapping("/medic/register")
-    public ResponseEntity<Object> registerMedic(@Validated@RequestBody RegisterMedicDTO registerMedicDTO, @RequestParam String nameSpecialty, @RequestParam String description){
+    public ResponseEntity<Object> registerMedic(@Validated@RequestBody RegisterMedicDTO registerMedicDTO){
 
-        if (nameSpecialty.isBlank()){
+        if (registerMedicDTO.getNameSpecialty().isBlank()){
             return new ResponseEntity<>("the specialty field is incomplete", HttpStatus.FORBIDDEN);
         }
-        if (description.isBlank()){
+        if (registerMedicDTO.getDescription().isBlank()){
             return new ResponseEntity<>("the description field is incomplete", HttpStatus.FORBIDDEN);
         }
         if (registerMedicDTO.getName().isBlank()){
@@ -74,10 +74,10 @@ public class MedicController {
         // falta encriptar contraseñas
         Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
 
-        MedicalSpecialties medicalSpecialties = medicalSpecialtiesRepository.findByName(nameSpecialty);
+        MedicalSpecialties medicalSpecialties = medicalSpecialtiesRepository.findByName(registerMedicDTO.getNameSpecialty());
         //Esta es una declaración condicional que verifica si medicalSpecialties es null. Si es null, significa que no se encontró ninguna especialidad con el nombre proporcionado en la base de datos.
         if (medicalSpecialties == null) {
-            medicalSpecialties = new MedicalSpecialties(nameSpecialty, description);
+            medicalSpecialties = new MedicalSpecialties(registerMedicDTO.getNameSpecialty(), registerMedicDTO.getDescription());
             medicalSpecialtiesRepository.save(medicalSpecialties);
         }
 
