@@ -5,7 +5,7 @@ import com.dev.clinic.models.Prescription;
 public class PrescriptionDTO {
 
     private long id;
-    private String fullNameMedic, firma,fullNamePatient, medicationPrescript,registrationNumber;
+    private String fullNameMedic, fullNamePatient, medicationPrescript,registrationNumber;
 
     public PrescriptionDTO() {
     }
@@ -15,7 +15,6 @@ public class PrescriptionDTO {
         this.fullNamePatient = prescription.getFullNamePatient();
         this.medicationPrescript = prescription.getMedicationPrescript();
         this.registrationNumber = prescription.getRegistrationNumber();
-        this.firma = prescription.getFirma();
     }
 
     public long getId() {
@@ -38,7 +37,4 @@ public class PrescriptionDTO {
         return registrationNumber;
     }
 
-    public String getFirma() {
-        return firma;
-    }
 }

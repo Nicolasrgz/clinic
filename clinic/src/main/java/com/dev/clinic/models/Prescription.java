@@ -11,7 +11,7 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private String fullNameMedic, fullNamePatient, medicationPrescript, registrationNumber, firma;
+    private String fullNameMedic, fullNamePatient, medicationPrescript, registrationNumber;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clinicHistory")
     private ClinicHistory clinicHistory;
@@ -23,12 +23,11 @@ public class Prescription {
     public Prescription() {
     }
 
-    public Prescription(String fullNameMedic, String fullNamePatient, String medicationPrescript, String registrationNumber, String firma) {
+    public Prescription(String fullNameMedic, String fullNamePatient, String medicationPrescript, String registrationNumber) {
         this.fullNameMedic = fullNameMedic;
         this.fullNamePatient = fullNamePatient;
         this.medicationPrescript = medicationPrescript;
         this.registrationNumber = registrationNumber;
-        this.firma = firma;
     }
 
     public long getId() {
@@ -81,13 +80,5 @@ public class Prescription {
 
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
-    }
-
-    public String getFirma() {
-        return firma;
-    }
-
-    public void setFirma(String firma) {
-        this.firma = firma;
     }
 }

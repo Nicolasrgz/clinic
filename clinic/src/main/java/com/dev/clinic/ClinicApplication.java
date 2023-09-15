@@ -92,7 +92,7 @@ public class ClinicApplication {
 			drJose.addMedicalAppointment(revision3);
 			clinicHistory.addMedicalAppointments(revision3);
 
-			Prescription prescription = new Prescription(drPepe.getLastName() +" " + drPepe.getName(), patient.getName() +" "+ patient.getLastName(), drPepe.getRegistrationNumber(), "ibuprofeno", "el pepe");
+			Prescription prescription = new Prescription(drPepe.getLastName() +" " + drPepe.getName(), patient.getName() +" "+ patient.getLastName(), drPepe.getRegistrationNumber(), "ibuprofeno");
 			drPepe.addPrescription(prescription);
 			clinicHistory.addPrescription(prescription);
 
