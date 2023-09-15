@@ -1,20 +1,25 @@
 package com.dev.clinic.dtos;
 
+import com.dev.clinic.models.Medic;
+import com.dev.clinic.models.Patient;
 import com.dev.clinic.models.Prescription;
 
-public class PrescriptionDTO {
+public class PrescriptionCreatedDTO {
 
     private long id;
     private String fullNameMedic, fullNamePatient, medicationPrescript,registrationNumber;
 
-    public PrescriptionDTO() {
+    private Integer dni;
+
+    public PrescriptionCreatedDTO() {
     }
 
-    public PrescriptionDTO(Prescription prescription) {
+    public PrescriptionCreatedDTO(Prescription prescription, Medic medic, Patient patient) {
         this.fullNameMedic = prescription.getFullNameMedic();
         this.fullNamePatient = prescription.getFullNamePatient();
         this.medicationPrescript = prescription.getMedicationPrescript();
-        this.registrationNumber = prescription.getRegistrationNumber();
+        this.registrationNumber = medic.getRegistrationNumber();
+        this.dni = patient.getDni();
     }
 
     public long getId() {
@@ -35,5 +40,9 @@ public class PrescriptionDTO {
 
     public String getRegistrationNumber() {
         return registrationNumber;
+    }
+
+    public Integer getDni() {
+        return dni;
     }
 }

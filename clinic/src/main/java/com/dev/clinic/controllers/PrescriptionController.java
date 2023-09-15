@@ -1,15 +1,14 @@
 package com.dev.clinic.controllers;
 
+import com.dev.clinic.dtos.PrescriptionCreatedDTO;
 import com.dev.clinic.dtos.PrescriptionDTO;
 import com.dev.clinic.repositories.ClinicHistoryRepository;
 import com.dev.clinic.repositories.PrescriptionRepository;
 import com.dev.clinic.services.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class PrescriptionController {
     }
 
     @PostMapping("/prescription/created")
-    public ResponseEntity<Object> createdPrescription(){
+    public ResponseEntity<Object> createdPrescription(@Validated@RequestBody PrescriptionCreatedDTO prescriptionCreatedDTO){
 
 
 
