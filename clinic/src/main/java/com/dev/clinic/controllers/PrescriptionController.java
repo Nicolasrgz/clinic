@@ -61,7 +61,6 @@ public class PrescriptionController {
         medicRepository.save(medic);
         patientRepository.save(patient);
 
-
         return  ResponseEntity.ok().build();
     }
 }
