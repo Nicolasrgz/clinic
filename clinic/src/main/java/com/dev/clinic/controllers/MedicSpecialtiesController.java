@@ -20,6 +20,7 @@ public class MedicSpecialtiesController {
     @Autowired
     private MedicalSpecialtiesRepository medicalSpecialtiesRepository;
 
+
     @GetMapping("/specialties")
     public List<MedicalSpecialtiesDTO>getMedicalSpecialties(){
         return medicSpecialtiesService.getSpecialties();
@@ -36,7 +37,7 @@ public class MedicSpecialtiesController {
         }
 
         String nameInLowerCase = medicalSpecialtiesDTO.getName().toLowerCase();
-        if (medicalSpecialtiesRepository.findByName(nameInLowerCase) != null){
+        if (medicSpecialtiesService.findByName(nameInLowerCase) != null){
             return new ResponseEntity<>("The specialty already exists", HttpStatus.BAD_REQUEST);
         }
 
@@ -45,7 +46,7 @@ public class MedicSpecialtiesController {
         }
 
         MedicalSpecialties medicalSpecialties = new MedicalSpecialties(medicalSpecialtiesDTO.getName(), medicalSpecialtiesDTO.getDescription());
-        medicalSpecialtiesRepository.save(medicalSpecialties);
+        medicSpecialtiesService.saveMedicalSpecialty(medicalSpecialties);
 
         return ResponseEntity.ok().build();
     }
