@@ -45,7 +45,6 @@ public class PrescriptionController {
         return prescriptionService.getPrescriptions();
     }
 
-    @Transactional
     @PostMapping("/prescription/created")
     public ResponseEntity<Object> createdPrescription(@Validated@RequestBody PrescriptionCreatedDTO prescriptionCreatedDTO){
 
