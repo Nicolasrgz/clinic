@@ -28,15 +28,7 @@ public class PrescriptionController {
     @Autowired
     private PrescriptionService prescriptionService;
     @Autowired
-    private PrescriptionRepository prescriptionRepository;
-    @Autowired
-    private ClinicHistoryRepository clinicHistoryRepository;
-    @Autowired
-    private PatientRepository patientRepository;
-    @Autowired
     private PatientService patientService;
-    @Autowired
-    private MedicRepository medicRepository;
     @Autowired
     private MedicService medicService;
 

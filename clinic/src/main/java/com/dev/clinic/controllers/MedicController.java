@@ -24,10 +24,6 @@ public class MedicController {
     @Autowired
     private MedicService medicService;
     @Autowired
-    private MedicRepository medicRepository;
-    @Autowired
-    private MedicalSpecialtiesRepository medicalSpecialtiesRepository;
-    @Autowired
     private MedicSpecialtiesService medicSpecialtiesService;
 
     @GetMapping("/medics")

@@ -17,9 +17,6 @@ public class MedicSpecialtiesController {
 
     @Autowired
     private MedicSpecialtiesService medicSpecialtiesService;
-    @Autowired
-    private MedicalSpecialtiesRepository medicalSpecialtiesRepository;
-
 
     @GetMapping("/specialties")
     public List<MedicalSpecialtiesDTO>getMedicalSpecialties(){
