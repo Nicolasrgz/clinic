@@ -7,6 +7,7 @@ import com.dev.clinic.models.MedicalSpecialties;
 import com.dev.clinic.repositories.MedicRepository;
 import com.dev.clinic.repositories.MedicalSpecialtiesRepository;
 import com.dev.clinic.services.service.MedicService;
+import com.dev.clinic.services.service.MedicSpecialtiesService;
 import com.dev.clinic.utils.MedicUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +23,13 @@ public class MedicController {
 
     @Autowired
     private MedicService medicService;
-
     @Autowired
     private MedicRepository medicRepository;
     @Autowired
     private MedicalSpecialtiesRepository medicalSpecialtiesRepository;
+    @Autowired
+    private MedicSpecialtiesService medicSpecialtiesService;
+
     @GetMapping("/medics")
     public List<MedicDTO> getMedics(){
         return medicService.getMedics();
@@ -56,7 +59,7 @@ public class MedicController {
         if (registerMedicDTO.getEmail().isBlank()){
             return new ResponseEntity<>("The Email field is incomplete", HttpStatus.FORBIDDEN);
         }
-        if (medicRepository.findByEmail(registerMedicDTO.getEmail()) != null){
+        if (medicService.findByEmail(registerMedicDTO.getEmail()) != null){
             return new ResponseEntity<>("The email is in use, please select another", HttpStatus.FORBIDDEN);
         }
         if (registerMedicDTO.getPassword().isBlank()){
@@ -74,11 +77,11 @@ public class MedicController {
         // falta encriptar contraseñas
         Medic medic = new Medic(registerMedicDTO.getName(), registerMedicDTO.getLastName(), registerMedicDTO.getAge(), registerMedicDTO.getEmail(), registrationNumber, registerMedicDTO.getPassword());
 
-        MedicalSpecialties medicalSpecialties = medicalSpecialtiesRepository.findByName(registerMedicDTO.getNameSpecialty());
+        MedicalSpecialties medicalSpecialties = medicSpecialtiesService.findByName(registerMedicDTO.getNameSpecialty());
         //Esta es una declaración condicional que verifica si medicalSpecialties es null. Si es null, significa que no se encontró ninguna especialidad con el nombre proporcionado en la base de datos.
         if (medicalSpecialties == null) {
             medicalSpecialties = new MedicalSpecialties(registerMedicDTO.getNameSpecialty(), registerMedicDTO.getDescription());
-            medicalSpecialtiesRepository.save(medicalSpecialties);
+            medicSpecialtiesService.saveMedicalSpecialty(medicalSpecialties);
         }
 
         medic.addMedicalSpecialty(medicalSpecialties);

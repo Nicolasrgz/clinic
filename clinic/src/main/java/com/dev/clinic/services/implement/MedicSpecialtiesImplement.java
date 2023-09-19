@@ -20,4 +20,14 @@ public class MedicSpecialtiesImplement implements MedicSpecialtiesService {
     public List<MedicalSpecialtiesDTO> getSpecialties() {
         return medicalSpecialtiesRepository.findAll().stream().map(MedicalSpecialtiesDTO::new).collect(Collectors.toList());
     }
+
+    @Override
+    public MedicalSpecialties findByName(String name) {
+        return medicalSpecialtiesRepository.findByName(name);
+    }
+
+    @Override
+    public void saveMedicalSpecialty(MedicalSpecialties medicalSpecialties) {
+        medicalSpecialtiesRepository.save(medicalSpecialties);
+    }
 }
