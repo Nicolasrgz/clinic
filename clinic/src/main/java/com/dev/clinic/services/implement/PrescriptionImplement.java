@@ -1,6 +1,7 @@
 package com.dev.clinic.services.implement;
 
 import com.dev.clinic.dtos.PrescriptionDTO;
+import com.dev.clinic.models.Prescription;
 import com.dev.clinic.repositories.PrescriptionRepository;
 import com.dev.clinic.services.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,10 @@ public class PrescriptionImplement implements PrescriptionService {
     @Override
     public List<PrescriptionDTO> getPrescriptions() {
         return prescriptionRepository.findAll().stream().map(PrescriptionDTO::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public void savePrescription(Prescription prescription) {
+        prescriptionRepository.save(prescription);
     }
 }

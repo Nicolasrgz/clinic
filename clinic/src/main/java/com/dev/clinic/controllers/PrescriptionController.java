@@ -9,6 +9,8 @@ import com.dev.clinic.repositories.ClinicHistoryRepository;
 import com.dev.clinic.repositories.MedicRepository;
 import com.dev.clinic.repositories.PatientRepository;
 import com.dev.clinic.repositories.PrescriptionRepository;
+import com.dev.clinic.services.service.MedicService;
+import com.dev.clinic.services.service.PatientService;
 import com.dev.clinic.services.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +34,11 @@ public class PrescriptionController {
     @Autowired
     private PatientRepository patientRepository;
     @Autowired
+    private PatientService patientService;
+    @Autowired
     private MedicRepository medicRepository;
+    @Autowired
+    private MedicService medicService;
 
     @GetMapping("/prescriptions")
     public List<PrescriptionDTO>getPrescriptions(){
@@ -50,16 +56,16 @@ public class PrescriptionController {
             return new ResponseEntity<>("The registration number field is incomplete", HttpStatus.FORBIDDEN);
         }
 
-        Patient patient = patientRepository.findByDni(prescriptionCreatedDTO.getDni());
-        Medic medic = medicRepository.findByRegistrationNumber(prescriptionCreatedDTO.getRegistrationNumber());
+        Patient patient = patientService.findByDni(prescriptionCreatedDTO.getDni());
+        Medic medic = medicService.findByRegistrationNumber(prescriptionCreatedDTO.getRegistrationNumber());
 
         Prescription prescription = new Prescription(medic.getName() + " " + medic.getLastName(), patient.getName() + " " + patient.getLastName(), prescriptionCreatedDTO.getMedicationPrescript(), prescriptionCreatedDTO.getRegistrationNumber());
         medic.addPrescription(prescription);
         patient.getClinicHistory().addPrescription(prescription);
 
-        prescriptionRepository.save(prescription);
-        medicRepository.save(medic);
-        patientRepository.save(patient);
+        prescriptionService.savePrescription(prescription);
+        medicService.saveMedic(medic);
+        patientService.savePatient(patient);
 
         return  ResponseEntity.ok().build();
     }
